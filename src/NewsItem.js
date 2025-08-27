@@ -8,7 +8,7 @@ export class NewsItem extends Component {
     return (
       <div className="my-3">
         <div className="card" >
-          <span class="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left: '90%', zIndex:1}}>{source}
+          <span className="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left: '90%', zIndex:1}}>{source}
   </span>
   <img src={!imageUrl?"https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2229129206.jpg?c=16x9&q=w_800,c_fill":imageUrl} className="card-img-top" alt="..."/>
   <div className="card-body">

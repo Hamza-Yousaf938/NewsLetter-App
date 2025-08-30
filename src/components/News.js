@@ -30,16 +30,26 @@ export class News extends Component {
     document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsLetter`;
   }
 
-   async updateNews(){
-    this.props.setProgress(0);
-           const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3b901996c24e43f79bbdbabb46b09f7a&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-             this.setState({loading: true});
-           let data = await fetch(url);
-           let parsedData = await data.json();
-           console.log(parsedData);
-           this.setState({articles: parsedData.articles, totalArticles:parsedData.totalResults, loading: false})
-           this.props.setProgress(100);
-    }
+  async updateNews() {
+  this.props.setProgress(0);
+
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY; // 🔑 read from .env.local
+  const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+
+  this.setState({ loading: true });
+  let data = await fetch(url);
+  let parsedData = await data.json();
+  console.log(parsedData);
+
+  this.setState({
+    articles: parsedData.articles,
+    totalArticles: parsedData.totalResults,
+    loading: false,
+  });
+
+  this.props.setProgress(100);
+}
+
     async componentDidMount(){
        this.updateNews();
     }

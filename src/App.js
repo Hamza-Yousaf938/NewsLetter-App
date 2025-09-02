@@ -1,38 +1,3 @@
-// import React, { Component } from 'react'   //rce to import this
-// import NavBar from './components/NavBar';
-// import News from './components/News';
-
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
-
-// export class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <Router>
-//         <NavBar/>
-       
-//           <Routes>
-//           <Route path="/">element={<News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="general"/>}</Route>
-//           <Route path="/business"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="business"/></Route>
-//           <Route path="/entertainment"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="entertainment"/></Route>
-//           <Route path="/general"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="general"/></Route>
-//           <Route path="/health"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="health"/></Route>
-//           <Route path="/science"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="science"/></Route>
-//           <Route path="/sports"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="sports"/></Route>
-//           <Route path="/technology"><News setProgress={this.setProgress} pageSize={this.pageSize} country="us" category="technology"/></Route>
-//         </Routes>
-//         </Router>
-//       </div>
-//     )
-//   }
-// }
-
-// export default App
-
 import React, { Component } from 'react'
 import NavBar from './components/NavBar';
 import News from './components/News';

@@ -33,13 +33,19 @@ export class News extends Component {
   async updateNews() {
   this.props.setProgress(0);
 
-  const apiKey = process.env.REACT_APP_NEWS_API_KEY; // 🔑 read from .env.local
-  const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+  let url;
+  if (process.env.NODE_ENV === "development") {
+    // 👉 Localhost: call NewsAPI directly with your key
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+    url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&page=${this.state.page}&pageSize=${this.props.pageSize}&apiKey=${apiKey}`;
+  } else {
+    // 👉 Production (Vercel): call your serverless function
+    url = `/api/news?country=${this.props.country}&category=${this.props.category}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+  }
 
   this.setState({ loading: true });
   let data = await fetch(url);
   let parsedData = await data.json();
-  console.log(parsedData);
 
   this.setState({
     articles: parsedData.articles,
@@ -49,6 +55,7 @@ export class News extends Component {
 
   this.props.setProgress(100);
 }
+
 
     async componentDidMount(){
        this.updateNews();
